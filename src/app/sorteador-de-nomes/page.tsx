@@ -65,6 +65,7 @@ export default function SorteadorDeNomes() {
           <div className={styles.group}>
             <Textarea
               placeholder="Escreva aqui os nomes que gostaria de sortear, separados por vírgula."
+              required
               value={field}
               onChange={(e) => setField(e.target.value)}
             />
