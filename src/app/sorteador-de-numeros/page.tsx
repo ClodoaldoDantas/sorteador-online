@@ -1,5 +1,6 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { Pointer } from 'lucide-react'
 
@@ -8,8 +9,9 @@ import { Input } from '@/components/Input'
 import { Container } from '@/components/Container'
 import { Button } from '@/components/Button'
 import { BackButton } from '@/components/BackButton'
-
 import { getRandomIntBetweenTwoValues } from '@/utils/get-random-int'
+import { useAppStore } from '@/store'
+
 import styles from './page.module.scss'
 
 export default function SorteadorDeNumeros() {
@@ -18,6 +20,9 @@ export default function SorteadorDeNumeros() {
     min: '1',
     max: '100',
   })
+
+  const router = useRouter()
+  const setResult = useAppStore((state) => state.setResult)
 
   function handleChangeInput(event: ChangeEvent<HTMLInputElement>) {
     setValues({
@@ -48,7 +53,8 @@ export default function SorteadorDeNumeros() {
       }
     }
 
-    console.log('Resultado', result)
+    setResult(result)
+    router.push('/resultado')
   }
 
   return (

@@ -1,5 +1,6 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
 import { FormEvent, useState } from 'react'
 import { Pointer } from 'lucide-react'
 
@@ -10,12 +11,16 @@ import { Button } from '@/components/Button'
 import { BackButton } from '@/components/BackButton'
 import { Textarea } from '@/components/Textarea'
 import { getRandomInt } from '@/utils/get-random-int'
+import { useAppStore } from '@/store'
 
 import styles from './page.module.scss'
 
 export default function SorteadorDeNomes() {
   const [quantity, setQuantity] = useState('1')
   const [field, setField] = useState('')
+
+  const router = useRouter()
+  const setResult = useAppStore((state) => state.setResult)
 
   function handleSubmit(event: FormEvent) {
     event.preventDefault()
@@ -31,7 +36,8 @@ export default function SorteadorDeNomes() {
       }
     }
 
-    console.log('Resultado', result)
+    setResult(result)
+    router.push('/resultado')
   }
 
   return (
