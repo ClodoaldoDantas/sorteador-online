@@ -20,8 +20,7 @@
 }
 
 .flex,
-.textarea,
-.upload {
+.textarea {
   margin-bottom: 1rem;
 }
 
@@ -30,29 +29,4 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 1rem;
-}
-
-.upload {
-  display: flex;
-  flex-direction: column;
-
-  input[type='file'] {
-    display: none;
-  }
-
-  label {
-    cursor: pointer;
-    border-radius: 4px;
-    padding: 1.5rem;
-    background-color: var(--gray-100);
-    border: 2px dashed var(--gray-300);
-
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-
-    strong {
-      font-weight: 600;
-    }
-  }
 }

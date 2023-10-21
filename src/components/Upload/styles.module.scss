@@ -1,0 +1,23 @@
+.upload {
+  margin-bottom: 1rem;
+}
+
+.uploadContent {
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 1.5rem;
+  background-color: var(--gray-100);
+  border: 2px dashed var(--gray-300);
+
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  &.active {
+    border-color: var(--blue-400);
+  }
+
+  strong {
+    font-weight: 600;
+  }
+}

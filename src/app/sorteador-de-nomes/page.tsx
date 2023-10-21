@@ -1,8 +1,8 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import { ChangeEvent, FormEvent, useState } from 'react'
-import { Pointer, Upload } from 'lucide-react'
+import { FormEvent, useState } from 'react'
+import { Pointer } from 'lucide-react'
 
 import { Center } from '@/components/Center'
 import { Input } from '@/components/Input'
@@ -12,6 +12,7 @@ import { BackButton } from '@/components/BackButton'
 import { Textarea } from '@/components/Textarea'
 import { getRandomInt } from '@/utils/get-random-int'
 import { useAppStore } from '@/store'
+import { UploadFile } from '@/components/Upload'
 
 import styles from './page.module.scss'
 
@@ -22,27 +23,8 @@ export default function SorteadorDeNomes() {
   const router = useRouter()
   const setResult = useAppStore((state) => state.setResult)
 
-  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const fileList = e.target.files
-
-    if (!fileList) return
-
-    const file = fileList.item(0)
-    const reader = new FileReader()
-
-    reader.onload = () => {
-      const readerResult = reader.result
-
-      if (readerResult && typeof readerResult === 'string') {
-        setField(readerResult)
-      }
-    }
-
-    if (file) {
-      reader.readAsText(file)
-    }
-
-    e.target.value = ''
+  function handleFileUpload(value: string) {
+    setField(value)
   }
 
   function handleSubmit(event: FormEvent) {
@@ -94,22 +76,7 @@ export default function SorteadorDeNomes() {
             />
           </div>
 
-          <div className={styles.upload}>
-            <input
-              type="file"
-              accept="text/plain"
-              id="file-upload"
-              onChange={handleFileChange}
-            />
-
-            <label htmlFor="file-upload">
-              <Upload size={20} />
-              <div>
-                Se preferir, selecione um arquivo <strong>.txt</strong> do seu
-                computador
-              </div>
-            </label>
-          </div>
+          <UploadFile onChange={handleFileUpload} />
 
           <Button type="submit">
             <Pointer size={20} />
