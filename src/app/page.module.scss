@@ -1,0 +1,46 @@
+.main {
+  height: 100vh;
+  width: 100vw;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  padding: 1.25rem;
+  background-color: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: 4px;
+
+  display: flex;
+  flex-direction: column;
+
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  svg {
+    margin-bottom: 1rem;
+    color: var(--gray-800);
+  }
+
+  strong {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--gray-800);
+    margin-bottom: 0.5rem;
+  }
+}

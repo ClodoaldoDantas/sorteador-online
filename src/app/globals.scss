@@ -19,13 +19,20 @@
 
   --blue-600: #2563eb;
   --blue-700: #1d4ed8;
+  --white: #ffffff;
 }
 
 body {
   background-color: var(--gray-50);
-  color: var(--gray-600);
+  color: var(--gray-500);
+  line-height: 1.5;
 }
 
 button {
   cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }

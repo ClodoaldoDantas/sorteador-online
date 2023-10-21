@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
-import { Poppins } from 'next/font/google'
+import { Sora } from 'next/font/google'
 import './globals.scss'
 
-const poppins = Poppins({ subsets: ['latin'], weight: ["400", "600"] })
+const sora = Sora({ subsets: ['latin'], weight: ['400', '600'] })
 
 export const metadata: Metadata = {
   title: 'Sorteador Online',
@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-br">
-      <body className={poppins.className}>{children}</body>
+      <body className={sora.className}>{children}</body>
     </html>
   )
 }
