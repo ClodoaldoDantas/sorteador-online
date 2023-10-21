@@ -1,11 +1,12 @@
 import Link from 'next/link'
 import { Calculator, User2 } from 'lucide-react'
 import { Container } from '@/components/Container'
+import { Center } from '@/components/Center'
 import styles from './page.module.scss'
 
 export default function Home() {
   return (
-    <main className={styles.main}>
+    <Center>
       <Container className={styles.grid}>
         <Link href="/sorteador-de-numeros">
           <div className={styles.card}>
@@ -31,6 +32,6 @@ export default function Home() {
           </div>
         </Link>
       </Container>
-    </main>
+    </Center>
   )
 }

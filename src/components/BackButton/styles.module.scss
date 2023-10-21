@@ -1,0 +1,12 @@
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  color: var(--blue-600);
+  transition: color 0.2s;
+
+  &:hover {
+    color: var(--blue-700);
+  }
+}

@@ -1,0 +1,28 @@
+.header {
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  color: var(--gray-800);
+  margin-bottom: 0.75rem;
+}
+
+.form {
+  input {
+    max-width: 10rem;
+  }
+
+  span {
+    font-size: 1.125rem;
+    color: var(--gray-700);
+  }
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
