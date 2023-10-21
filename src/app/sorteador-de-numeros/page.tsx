@@ -9,7 +9,7 @@ import { Container } from '@/components/Container'
 import { Button } from '@/components/Button'
 import { BackButton } from '@/components/BackButton'
 
-import { getRandomInt } from '@/utils/get-random-int'
+import { getRandomIntBetweenTwoValues } from '@/utils/get-random-int'
 import styles from './page.module.scss'
 
 export default function SorteadorDeNumeros() {
@@ -41,7 +41,7 @@ export default function SorteadorDeNumeros() {
     const result: number[] = []
 
     while (result.length < quantity) {
-      const number = getRandomInt(min, max)
+      const number = getRandomIntBetweenTwoValues(min, max)
 
       if (!result.includes(number)) {
         result.push(number)
