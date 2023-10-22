@@ -1,63 +1,55 @@
 'use client'
 
 import { Upload as UploadIcon } from 'lucide-react'
-import { useCallback } from 'react'
-import classNames from 'classnames'
+import { ChangeEvent } from 'react'
 
 import styles from './styles.module.scss'
-import { useDropzone } from 'react-dropzone'
 
 type UploadFileProps = {
   onChange: (value: string) => void
 }
 
 export function UploadFile({ onChange }: UploadFileProps) {
-  const onDrop = useCallback(
-    (acceptedFiles: File[]) => {
-      if (acceptedFiles.length === 0) {
-        return
+  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const fileList = e.target.files
+
+    if (!fileList) return
+
+    const file = fileList.item(0)
+    const reader = new FileReader()
+
+    reader.onload = () => {
+      const readerResult = reader.result
+
+      if (readerResult && typeof readerResult === 'string') {
+        onChange(readerResult)
       }
+    }
 
-      const file = acceptedFiles[0]
-      const reader = new FileReader()
-
-      reader.onload = () => {
-        const readerResult = reader.result
-
-        if (readerResult && typeof readerResult === 'string') {
-          onChange(readerResult)
-        }
-      }
-
+    if (file) {
       reader.readAsText(file)
-    },
-    [onChange]
-  )
+    }
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    onDrop,
-    multiple: false,
-    accept: {
-      'text/plain': [],
-    },
-  })
+    e.target.value = ''
+  }
 
   return (
-    <div {...getRootProps({ className: styles.upload })}>
-      <input {...getInputProps()} />
+    <div className={styles.upload}>
+      <input
+        id="file-upload"
+        type="file"
+        accept="text/plain"
+        onChange={handleFileChange}
+      />
 
-      <div
-        className={classNames(styles.uploadContent, {
-          [styles.active]: isDragActive,
-        })}
-      >
+      <label htmlFor="file-upload" className={styles.uploadContent}>
         <UploadIcon size={20} />
 
         <div>
           Se preferir, selecione um arquivo <strong>.txt</strong> do seu
           computador
         </div>
-      </div>
+      </label>
     </div>
   )
 }
